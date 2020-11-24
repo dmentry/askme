@@ -8,6 +8,9 @@ class User < ApplicationRecord
 
   validates :email, :username, presence: true
   validates :email, :username, uniqueness: true
+  validates :email, format: { with: /\A\w+@\w+\.\w+\z/, message: "enter correct email" }
+  validates :username, length: { maximum: 40, message: "username must not be longer than 40 characters" }
+  validates :username, format: { with: /\A[a-zA-Z0-9_]+\z/, message: "username must contain only roman letters, digits and '_'" }
 
   attr_accessor :password
 
