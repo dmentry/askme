@@ -1,23 +1,21 @@
 require "openssl"
-
 class User < ApplicationRecord
   ITERATIONS = 20_000
   DIGEST = OpenSSL::Digest::SHA256.new
+  EMAIL = /\A\w+@\w+\.\w+\z/
+  USERNAME = /\A\w+\z/
+
+  attr_accessor :password
 
   has_many :questions
 
   validates :email, :username, presence: true
   validates :email, :username, uniqueness: true
-  validates :email, format: { with: /\A\w+@\w+\.\w+\z/, message: "enter correct email" }
-  validates :username, length: { maximum: 40, message: "username must not be longer than 40 characters" }
-  validates :username, format: { with: /\A[a-zA-Z0-9_]+\z/, message: "username must contain only roman letters, digits and '_'" }
-
-  attr_accessor :password
-
-  validates_presence_of :password, on: :create
-  validates_confirmation_of :password
-
-  before_save :encrypt_password
+  validates :email, format: { with: EMAIL }
+  validates :username, length: { maximum: 40 }
+  validates :username, format: { with: USERNAME }
+  validates :password, presence: true, on: :create
+  validates :password, confirmation: true
 
   def encrypt_password
     if password.present?
@@ -32,19 +30,11 @@ class User < ApplicationRecord
       # восстановить исходный пароль. Однако, если правильный пароль у нас есть,
       # мы легко можем получить такую же строку и сравнить её с той, что в базе.
       self.password_hash = User.hash_to_string(
-          OpenSSL::PKCS5.pbkdf2_hmac(
-              password, password_salt, ITERATIONS, DIGEST.length, DIGEST
-          )
+          OpenSSL::PKCS5.pbkdf2_hmac(password, password_salt, ITERATIONS, DIGEST.length, DIGEST)
       )
 
       # Оба поля попадут в базу при сохранении (save).
     end
-  end
-
-  # Служебный метод, преобразующий бинарную строку в шестнадцатиричный формат,
-  # для удобства хранения.
-  def self.hash_to_string(password_hash)
-    password_hash.unpack('H*')[0]
   end
 
   # Основной метод для аутентификации юзера (логина). Проверяет email и пароль,
@@ -59,9 +49,7 @@ class User < ApplicationRecord
 
     # Формируем хэш пароля из того, что передали в метод
     hashed_password = User.hash_to_string(
-        OpenSSL::PKCS5.pbkdf2_hmac(
-            password, user.password_salt, ITERATIONS, DIGEST.length, DIGEST
-        )
+        OpenSSL::PKCS5.pbkdf2_hmac(password, user.password_salt, ITERATIONS, DIGEST.length, DIGEST)
     )
 
     # Обратите внимание: сравнивается password_hash, а оригинальный пароль так
@@ -73,4 +61,13 @@ class User < ApplicationRecord
     nil
   end
 
+  before_save :encrypt_password
+
+  private
+
+  # Служебный метод, преобразующий бинарную строку в шестнадцатиричный формат,
+  # для удобства хранения.
+  def self.hash_to_string(password_hash)
+    password_hash.unpack('H*')[0]
+  end
 end
