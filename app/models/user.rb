@@ -1,4 +1,5 @@
 require "openssl"
+
 class User < ApplicationRecord
   ITERATIONS = 20_000
   DIGEST = OpenSSL::Digest::SHA256.new
@@ -14,6 +15,8 @@ class User < ApplicationRecord
   validates :username, length: { maximum: 40 }, format: { with: USERNAME }
   validates :password, presence: true, on: :create
   validates :password, confirmation: true
+
+  before_validation :set_username_downcase
 
   before_save :encrypt_password
 
@@ -48,6 +51,10 @@ class User < ApplicationRecord
   end
 
   private
+
+  def set_username_downcase
+    self.username = username.downcase
+  end
 
   def encrypt_password
     if password.present?
