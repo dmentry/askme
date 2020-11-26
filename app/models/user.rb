@@ -53,8 +53,10 @@ class User < ApplicationRecord
   private
 
   def set_username_mail_downcase
-    self.username = username.downcase if username != nil
-    self.email = email.downcase if email != nil
+    # self.username = username.downcase if username != nil
+    # self.email = email.downcase if email != nil
+    self.username = username&.downcase
+    self.email = email&.downcase
   end
 
   def encrypt_password
