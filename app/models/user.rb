@@ -25,6 +25,8 @@ class User < ApplicationRecord
   # пользователя. Если нет — возвращает nil.
   def self.authenticate(email, password)
     # Сначала находим кандидата по email
+    email&.downcase!
+
     user = find_by(email: email)
 
     # Если пользователь не найден, возвращает nil
@@ -53,8 +55,8 @@ class User < ApplicationRecord
   private
 
   def set_username_mail_downcase
-    self.username = username&.downcase
-    self.email = email&.downcase
+    username&.downcase!
+    email&.downcase!
   end
 
   def encrypt_password
