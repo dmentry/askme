@@ -1,33 +1,37 @@
 class UsersController < ApplicationController
   def index
-    @users = [
-        User.new(
-            id: 1,
-            name: "Vadim",
-            username: "installero",
-            avatar_url: "https://secure.gravatar.com/avatar/71269686e0f757ddb4f73614f43ae445?s=100"
-        ),
-        User.new(id: 2, name: "Misha", username: "aristofun")
-    ]
+    @users = User.all
   end
 
   def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(user_params)
+
+    if @user.save
+      redirect_to root_url, notice: "Пользователь успешно зарегистрирован."
+    else
+      render "new"
+    end
   end
 
   def edit
+    @user = User.find params[:id]
+
   end
 
   def show
-    @user = User.new(
-    name: "Dima",
-    username: "dack",
-    avatar_url: "https://goodprogrammer.ru/system/avatars/000/016/134/503d2ca27264c2567d5cde553587451d98539fc1_x300.jpg?1602616080"
-    )
+    @user = User.find params[:id]
+    @questions = @user.questions.order(created_at: :desc)
 
-    @questions = [Question.new(text: "Как дела?", created_at: Date.parse("24.11.2020")),
-                  Question.new(text: "Какая погода?", created_at: Date.parse("25.11.2020"))
-    ]
+    @new_question = @user.questions.build
+  end
 
-    @new_question = Question.new
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation, :name, :username, :avatar_url)
   end
 end

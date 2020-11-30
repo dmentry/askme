@@ -19,6 +19,10 @@
     @<%= @user.username %>
   </h2>
 
+  <div class="questions-quantity margin-bottom">
+    <p>Пользователю <%= questions_sklonyator(@user.questions.count) %></p>
+  </div>
+
   <div class="user-ask-button container text-center">
     <%# Используем встроенный в rails хелпер link_to %>
     <%= link_to "Спроси меня", '', class: 'button button-light', id: 'ask-button' %>
@@ -54,7 +58,7 @@
 
 <%# Блок со списком вопросов к пользователю %>
 <div class="column-3-4">
-  <div class="user-questions buffer-both">
+  <div class=<%= hide_form(@user.questions.count) %>>
     <div class="questions-list">
       <%# Обратите внимание, как мы делаем цикл по всем вопросам, точно %>
       <%# также, как мы делали циклы в ruby %>

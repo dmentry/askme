@@ -43,3 +43,11 @@ a {
 .text-center {
   text-align: center;
 }
+
+.margin-bottom {
+    margin-bottom: 16px;
+}
+
+.invisible {
+    display: none;
+}
