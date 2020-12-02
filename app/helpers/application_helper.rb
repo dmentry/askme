@@ -21,7 +21,7 @@ module ApplicationHelper
     if last_numeral == 1
       " задали #{number} #{first_form}"
     elsif last_numeral > 1 && last_numeral < 5
-      return " задали #{number} #{second_form}"
+       " задали #{number} #{second_form}"
     else
       " задали #{number} #{third_form}"
     end
@@ -34,4 +34,9 @@ module ApplicationHelper
       form_class = "invisible"
     end
   end
+
+  def fa_icon(icon_class)
+    content_tag "span", "", class: "fa fa-#{icon_class}"
+  end
+
 end
