@@ -16,10 +16,6 @@
   </h2>
 </div>
 
-<div class="questions-quantity margin-bottom">
-  <p>Пользователю <%= questions_sklonyator(@user.questions.count) %></p>
-</div>
-
 <div class="user-details">
   <div class="user-ask-button container text-center">
     <%= link_to "Спроси меня", '', class: 'button button-light', id: 'ask-button' %>
@@ -30,15 +26,15 @@
   <div class="user-statistics container text-center">
     <div class="column-1-3">
       <h1 class="title-small"><%= @questions_count %></h1>
-      <p>вопросов</p>
+      <p><%= questions_sklonyator(@questions_count, "вопрос", "вопроса", "вопросов")%></p>
     </div>
     <div class="column-1-3">
       <h1 class="title-small"><%= @answers_count %></h1>
-      <p>ответов</p>
+      <p><%= questions_sklonyator(@answers_count, "ответ", "ответа", "ответов") %></p>
     </div>
     <div class="column-1-3">
       <h1 class="title-small"><%= @unanswered_count %></h1>
-      <p>безответных</p>
+      <p><%= questions_sklonyator(@unanswered_count, "без ответа", "без ответа", "без ответов") %></p>
     </div>
   </div>
 </div>

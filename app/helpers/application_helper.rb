@@ -7,23 +7,20 @@ module ApplicationHelper
     end
   end
 
-  def questions_sklonyator(number)
-    first_form  = "вопрос"
-    second_form = "вопроса"
-    third_form = "вопросов"
+  def questions_sklonyator(number, first_form, second_form, third_form)
 
-    return "пока не задали ни одного вопроса" if number == 0
+    return "пока ни одного #{second_form}" if number == 0
 
-    return " задали #{number} #{third_form}" if (11..14).include?(number % 100)
+    return third_form if (11..14).include?(number % 100)
 
     last_numeral = number % 10
 
     if last_numeral == 1
-      " задали #{number} #{first_form}"
+      first_form
     elsif last_numeral > 1 && last_numeral < 5
-       " задали #{number} #{second_form}"
+       second_form
     else
-      " задали #{number} #{third_form}"
+      third_form
     end
   end
 
