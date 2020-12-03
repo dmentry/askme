@@ -24,6 +24,11 @@
   color: #fff;
 }
 
+.button-alarm {
+    background: #111111 ;
+    color: #111111;
+}
+
 .button-small {
   font-size: 15px;
   line-height: 15px;
