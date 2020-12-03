@@ -58,7 +58,7 @@
 
 <div class="column-3-4">
   <div class="user-questions buffer-both">
-    <div class="questions-list">
+    <div class= <%= @questions.count > 0 ? "questions-list" : "invisible" %>>
       <% @questions.each do |question| %>
         <%= render partial: 'questions/question', object: question %>
       <% end %>

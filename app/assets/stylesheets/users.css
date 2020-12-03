@@ -68,3 +68,7 @@
     display: none;
   }
 }
+
+.invisible {
+    display: none;
+}
