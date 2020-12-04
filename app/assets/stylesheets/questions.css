@@ -41,3 +41,11 @@
 .question-actions a {
   margin-left: 10px;
 }
+
+.question-author {
+    font-size: 12px;
+}
+
+.question-author a{
+    color: #111111;
+}
