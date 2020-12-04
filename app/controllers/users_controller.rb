@@ -49,9 +49,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    name = @user.username
     @user.destroy
 
-    redirect_to root_path, notice: "Пользователь удален"
+    redirect_to root_path, notice: "Пользователь #{name} удален"
   end
 
   private
