@@ -16,8 +16,7 @@ class User < ApplicationRecord
   validates :username, length: { maximum: 40 }, format: { with: USERNAME }
   validates :password, presence: true, on: :create
   validates :password, confirmation: true
-  # validates :color_background, allow_blank: true, format: { with: COLOR }
-  validates :color_background, format: { with: COLOR }
+  validates :color_background, allow_blank: true, format: { with: COLOR }
 
   before_validation :set_username_mail_downcase
 
