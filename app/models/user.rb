@@ -5,18 +5,18 @@ class User < ApplicationRecord
   DIGEST = OpenSSL::Digest::SHA256.new
   EMAIL = /\A\w+@\w+\.\w+\z/
   USERNAME = /\A\w+\z/
-  COLOR = /(\A^\z|\A[a-zA-Z0-9]{6}\z)/
+  COLOR = /(\A[a-zA-Z0-9]{6}\z)/
 
   attr_accessor :password
 
-  has_many :questions, :dependent => :delete_all
+  has_many :questions, dependent: :delete_all
 
   validates :email, :username, presence: true, uniqueness: true
   validates :email, format: { with: EMAIL }
   validates :username, length: { maximum: 40 }, format: { with: USERNAME }
   validates :password, presence: true, on: :create
   validates :password, confirmation: true
-  validates :color_background, format: { with: COLOR }
+  validates :color_background, allow_blank: true, format: { with: COLOR }
 
   before_validation :set_username_mail_downcase
 
