@@ -1,4 +1,4 @@
-<div class="user-header text-center" style="background-color: <%= @user.color_background.blank? ? "#00948a" : "##{@user.color_background}" %>">
+<div class="user-header text-center" style="background-color: <%= "#{@user.color_background}" %>">
   <h1 class="title-medium">
     <%= @user.name %>
   </h1>
