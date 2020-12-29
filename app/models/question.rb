@@ -3,5 +3,5 @@ class Question < ApplicationRecord
 
   belongs_to :author, class_name: "User", optional: true
 
-  validates :text, length: { maximum: 255 }
+  validates :text, length: { maximum: 255 }, presence: true
 end
