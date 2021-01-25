@@ -6,4 +6,18 @@ class Question < ApplicationRecord
   belongs_to :author, class_name: "User", optional: true
 
   validates :text, length: { maximum: 255 }, presence: true
+
+  #создаем хэштеги после удачного сохранения в БД при создании и обновлении
+  after_commit :create_hashtags, on %i[create update]
+
+  private
+
+  def create_hashtags
+    self.hashtags =
+      "#{text} #{answer}".
+      downcase.
+      scan(Hashtag::REGEXP).
+      uniq.
+      map { |ht| Hashtag.find_or_create_by(text: ht.delete('#')) }
+  end
 end
