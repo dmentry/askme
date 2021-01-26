@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @hashtags = Hashtag.with_questions
   end
 
   def new
@@ -45,7 +46,9 @@ class UsersController < ApplicationController
     @new_question = @user.questions.build
 
     @questions_count = @questions.count
+
     @answers_count = @questions.where.not(answer: nil).count
+
     @unanswered_count = @questions_count - @answers_count
   end
 
