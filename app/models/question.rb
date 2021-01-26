@@ -8,7 +8,7 @@ class Question < ApplicationRecord
   validates :text, length: { maximum: 255 }, presence: true
 
   #создаем хэштеги после удачного сохранения в БД при создании и обновлении
-  after_commit :create_hashtags, on %i[create update]
+  after_commit :create_hashtags, on: %i[create update]
 
   private
 

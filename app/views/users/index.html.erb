@@ -20,10 +20,12 @@
   <% end %>
 
   <div class="buffer-both">
-    <% @hashtags.each do |hashtag| %>
-      <span>
-        <%= link_to "##{hashtag.text}, hashtag_path(hashtag.text) %>
-      </span>
-    <% end %>
+    <h2>Наши  хэштеги</h2>
   </div>
+
+  <% @hashtags.each do |hashtag| %>
+    <span>
+      <%= link_to "##{hashtag.text}", hashtag_path(hashtag.text) %>
+    </span>
+  <% end %>
 </div>
