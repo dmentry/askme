@@ -4,21 +4,23 @@
 <div class="question">
   <div class="question-content">
     <div class="question-text text-lead">
-      <%= question.text %>
+      <%= text_with_hashtag_link(question.text) %>
 
-      <% if question.author_id.present? %>
+      <% if question.author.present? %>
         <div class="question-author">
           <%= link_to "Автор: @#{question.author.username}", user_path(question.author) %>
         </div>
+      <% else %>
+        Инкогнито
       <% end %>
-
     </div>
 
     <% if question.answer.present? %>
       <div class="question.answer text-lead">
-        <%= question.answer %>
+        <%= text_with_hashtag_link(question.answer) %>
       </div>
     <% end %>
+
     <div class="question-date">
       <%= l(question.created_at, format: :short) %>
     </div>
