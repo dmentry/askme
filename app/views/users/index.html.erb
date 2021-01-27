@@ -24,7 +24,7 @@
   </div>
 
   <% @hashtags.each do |hashtag| %>
-    <span>
+    <span class="question-hashtag">
       <%= link_to "##{hashtag.text}", hashtag_path(hashtag.text) %>
     </span>
   <% end %>

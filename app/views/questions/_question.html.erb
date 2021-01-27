@@ -3,12 +3,12 @@
 
 <div class="question">
   <div class="question-content">
-    <div class="question-text text-lead">
+    <div class="question-text text-lead question-hashtag">
       <%= text_with_hashtag_link(question.text) %>
 
       <% if question.author.present? %>
         <div class="question-author">
-          <%= link_to "Автор: @#{question.author.username}", user_path(question.author) %>
+          Автор: <%= link_to "@#{question.author.username}", user_path(question.author) %>
         </div>
       <% else %>
         Инкогнито
