@@ -11,7 +11,9 @@
           Автор: <%= link_to "@#{question.author.username}", user_path(question.author) %>
         </div>
       <% else %>
-        Инкогнито
+        <div class="question-author">
+          Автор: Инкогнито
+        </div>
       <% end %>
     </div>
 
