@@ -1,24 +1,31 @@
-# README
+# Good questions
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Web-application where users could ask and answer questions. Registered and anonymous users could ask questions. Google CAPTCHA was applied via reCAPTCHA gem in security reasons. Application uses Heroku for hosting.
 
-Things you may want to cover:
+# Try application
+https://allask.herokuapp.com
 
-* Ruby version
+# Screenshot
+![Application screenshot](https://github.com/dmentry/bbq_my/blob/master/bbq_screenshot.jpg)
 
-* System dependencies
+# System
+Ruby 2.7.0
 
-* Configuration
+Rails 6.0.3
 
-* Database creation
+# Installation
+git clone git@github.com:dmentry/askme.git
 
-* Database initialization
+## Before run
+bundle && bundle exec rake db:migrate
 
-* How to run the test suite
+Write keys for captcha in environment variables (RECAPTCHA_ASKME_PUBLIC_KEY, RECAPTCHA_ASKME_PRIVATE_KEY)
 
-* Services (job queues, cache servers, search engines, etc.)
+## Run locally server
+bundle exec rails s
 
-* Deployment instructions
+Open in browser
 
-* ...
+http://127.0.0.1:3000
+
+
