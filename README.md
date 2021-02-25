@@ -6,7 +6,7 @@ Web-application where users could ask and answer questions. Registered and anony
 https://allask.herokuapp.com
 
 # Screenshot
-![Application screenshot](https://github.com/dmentry/bbq_my/blob/master/bbq_screenshot.jpg)
+![Application screenshot](https://github.com/dmentry/askme/blob/master/askme_screenshot.jpg)
 
 # System
 Ruby 2.7.0
