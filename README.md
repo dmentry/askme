@@ -1,6 +1,6 @@
 # Good questions
 
-Web-application where users could ask and answer questions. Registered and anonymous users could ask questions. Google CAPTCHA was applied via reCAPTCHA gem in security reasons. Application uses Heroku for hosting.
+Web-application where users could ask and answer questions. Registered and anonymous users could ask questions. Google CAPTCHA is applied via reCAPTCHA gem in security reasons. Application uses Heroku for hosting.
 
 # Try application
 https://allask.herokuapp.com
