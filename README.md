@@ -19,7 +19,7 @@ git clone git@github.com:dmentry/askme.git
 ### Before run
 bundle && bundle exec rake db:migrate
 
-Write keys for captcha in environment variables (RECAPTCHA_ASKME_PUBLIC_KEY, RECAPTCHA_ASKME_PRIVATE_KEY)
+Put keys for captcha into environment variables (RECAPTCHA_ASKME_PUBLIC_KEY, RECAPTCHA_ASKME_PRIVATE_KEY)
 
 ### Run locally server
 bundle exec rails s
