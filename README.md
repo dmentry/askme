@@ -24,10 +24,10 @@ git clone git@github.com:dmentry/askme.git
 
 ```yarn```
 
-Put keys for captcha into environment variables (RECAPTCHA_ASKME_PUBLIC_KEY, RECAPTCHA_ASKME_PRIVATE_KEY)
+Put keys for captcha into environment variables ```RECAPTCHA_ASKME_PUBLIC_KEY```, ```RECAPTCHA_ASKME_PRIVATE_KEY```
 
 ### Start server
-To start rails server
+To start rails server:
 
 ```bundle exec rails s```
 
