@@ -24,6 +24,8 @@ Put keys for captcha into environment variables (RECAPTCHA_ASKME_PUBLIC_KEY, REC
 ### Run locally server
 bundle exec rails s
 
+yarn
+
 ### Open in browser
 
 http://127.0.0.1:3000
