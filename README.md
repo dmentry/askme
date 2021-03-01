@@ -9,27 +9,39 @@ https://allask.herokuapp.com
 ![Application screenshot](https://github.com/dmentry/askme/blob/master/askme_screenshot.jpg)
 
 ## Main requirements
-Ruby 2.7.0
+* Ruby 2.7.0
 
-Rails 6.0.3
+* Rails 6.0.3
 
 ## Clone
+
+```
 git clone git@github.com:dmentry/askme.git
+```
 
 ## Before run
 ### Install and migrate db
-```bundle install```
 
-```bundle exec rake db:migrate```
+```
+bundle install
+```
 
-```yarn```
+```
+bundle exec rake db:migrate
+```
 
-Put keys for captcha into environment variables ```RECAPTCHA_ASKME_PUBLIC_KEY```, ```RECAPTCHA_ASKME_PRIVATE_KEY```
+```
+yarn
+```
+
+Put keys for captcha into environment variables `RECAPTCHA_ASKME_PUBLIC_KEY`, `RECAPTCHA_ASKME_PRIVATE_KEY`
 
 ### Start server
 To start rails server:
 
-```bundle exec rails s```
+```
+bundle exec rails s
+```
 
 ### Open in browser
 
