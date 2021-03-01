@@ -2,32 +2,35 @@
 
 Web-application where users could ask and answer questions. Registered and anonymous users could ask questions. Google CAPTCHA is applied via reCAPTCHA gem in security reasons. Application uses Heroku for hosting.
 
-# Try application
+## Live Demo
 https://allask.herokuapp.com
 
-# Screenshot
+## Screenshot
 ![Application screenshot](https://github.com/dmentry/askme/blob/master/askme_screenshot.jpg)
 
-# System
+## Main requirements
 Ruby 2.7.0
 
 Rails 6.0.3
 
-# Installation
+## Clone
 git clone git@github.com:dmentry/askme.git
 
-### Before run
-bundle && bundle exec rake db:migrate
+## Before run
+### Install and migrate db
+```bundle install```
+
+```bundle exec rake db:migrate```
+
+```yarn```
 
 Put keys for captcha into environment variables (RECAPTCHA_ASKME_PUBLIC_KEY, RECAPTCHA_ASKME_PRIVATE_KEY)
 
-### Run locally server
-bundle exec rails s
+### Start server
+To start rails server
 
-yarn
+```bundle exec rails s```
 
 ### Open in browser
 
 http://127.0.0.1:3000
-
-
